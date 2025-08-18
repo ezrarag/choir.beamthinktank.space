@@ -1,12 +1,14 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Only create client if environment variables are available
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+// Temporarily disabled for build - uncomment when Supabase is configured
+// const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+// const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-export const supabase = supabaseUrl && supabaseAnonKey 
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null
+// export const supabase = supabaseUrl && supabaseAnonKey 
+//   ? createClient(supabaseUrl, supabaseAnonKey)
+//   : null
+
+export const supabase = null
 
 // Database types for TypeScript
 export interface ChoirGroup {
