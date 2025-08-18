@@ -1,4 +1,4 @@
-import Stripe from 'stripe'
+// import Stripe from 'stripe'
 
 // Temporarily disabled for build - uncomment when Stripe is configured
 // const stripeSecretKey = process.env.STRIPE_SECRET_KEY

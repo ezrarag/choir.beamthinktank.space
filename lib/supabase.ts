@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+// import { createClient } from '@supabase/supabase-js'
 
 // Temporarily disabled for build - uncomment when Supabase is configured
 // const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
