@@ -48,7 +48,7 @@ export default function CitySelector({ selectedCity, onCityChange }: CitySelecto
 
         <div className="text-center mt-8">
           <p className="text-gray-600">
-            Can't find your city?{' '}
+            Can&apos;t find your city?{' '}
             <a href="#contact" className="text-primary-600 hover:text-primary-700 font-medium">
               Contact us to start a choir group
             </a>
