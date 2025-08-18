@@ -1,6 +1,8 @@
-# BEAM Choir & Vocal Arts Foundation
+# BEAM Choir Foundation
 
 A Next.js website for the BEAM Choir & Vocal Arts Foundation, supporting gospel, classical, opera, and contemporary vocal arts through community concerts, music education, and facility development.
+
+<!-- Build Status: Ready for Vercel Deployment -->
 
 ## Features
 
