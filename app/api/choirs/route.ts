@@ -3,6 +3,14 @@ import { supabase } from '@/lib/supabase'
 
 export async function GET(request: NextRequest) {
   try {
+    // Check if Supabase is configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database not configured' },
+        { status: 503 }
+      )
+    }
+
     const { searchParams } = new URL(request.url)
     const city = searchParams.get('city')
     const type = searchParams.get('type')

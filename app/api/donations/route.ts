@@ -4,6 +4,14 @@ import { supabase } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if required services are configured
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database not configured' },
+        { status: 503 }
+      )
+    }
+
     const { amount, donorName, donorEmail, message, city, choirType } = await request.json()
 
     if (!amount || !donorName || !donorEmail) {

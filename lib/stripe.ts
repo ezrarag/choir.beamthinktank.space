@@ -1,10 +1,17 @@
 import Stripe from 'stripe'
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2023-10-16',
-})
+// Only create client if environment variables are available
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY
+
+export const stripe = stripeSecretKey 
+  ? new Stripe(stripeSecretKey, { apiVersion: '2023-10-16' })
+  : null
 
 export const createCheckoutSession = async (amount: number, metadata: any) => {
+  if (!stripe) {
+    throw new Error('Stripe is not configured')
+  }
+
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
