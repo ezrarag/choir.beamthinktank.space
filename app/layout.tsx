@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import SiteFooter from '@/components/layout/SiteFooter'
+import SiteHeader from '@/components/layout/SiteHeader'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'BEAM Choir & Vocal Arts Foundation',
-  description: 'Supporting gospel, classical, opera, and contemporary vocal arts through community concerts, music education, and facility development.',
-  keywords: 'choir, vocal arts, gospel, classical, opera, contemporary, music education, community concerts',
+  title: 'BEAM Chorus Platform',
+  description: 'Shared-platform scaffold for chorus program routes, content rails, service requests, and dashboard tracking.',
 }
 
 export default function RootLayout({
@@ -14,8 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gray-50">
+      <body className="min-h-screen bg-slate-950 text-slate-100">
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   )

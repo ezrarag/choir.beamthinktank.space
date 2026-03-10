@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 // import { supabase } from '@/lib/supabase'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     // Temporarily disabled - return mock data for build
@@ -11,7 +13,7 @@ export async function GET(request: NextRequest) {
     //   )
     // }
 
-    const { searchParams } = new URL(request.url)
+    const { searchParams } = request.nextUrl
     const city = searchParams.get('city')
     const type = searchParams.get('type')
 
