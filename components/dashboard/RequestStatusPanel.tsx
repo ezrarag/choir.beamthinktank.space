@@ -6,14 +6,34 @@ interface RequestStatusPanelProps {
 
 export default function RequestStatusPanel({ requests }: RequestStatusPanelProps) {
   return (
-    <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-      <h3 className="text-lg font-semibold text-slate-100">Request Status</h3>
-      <div className="mt-3 space-y-2">
+    <section className="theatre-card p-6 space-y-4">
+      <div className="border-b border-theatre-gold-500/20 pb-3">
+        <span className="text-[10px] font-theatre-cinzel uppercase tracking-[0.2em] text-theatre-gold-400">
+          Choral Intake Desk
+        </span>
+        <h3 className="font-theatre-serif text-2xl text-theatre-parchment-50 font-normal">
+          Active Service Requests
+        </h3>
+      </div>
+      <div className="space-y-3">
         {requests.map((request) => (
-          <article key={request.id} className="rounded-lg border border-slate-800 bg-slate-950/60 p-3">
-            <p className="text-sm font-medium text-slate-100">{request.organizationName ?? request.requesterId}</p>
-            <p className="mt-1 text-xs uppercase tracking-wide text-amber-200">{request.status}</p>
-            <p className="mt-1 text-xs text-slate-300">{request.notes}</p>
+          <article
+            key={request.id}
+            className="border border-theatre-gold-500/20 bg-theatre-dark-950/80 p-4 space-y-1.5"
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-semibold text-theatre-parchment-100">
+                {request.organizationName ?? request.requesterId}
+              </p>
+              <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 border border-theatre-gold-500/40 bg-theatre-gold-500/10 text-theatre-gold-300">
+                {request.status}
+              </span>
+            </div>
+            <p className="text-xs text-theatre-parchment-400 leading-relaxed">{request.notes}</p>
+            <div className="flex items-center justify-between text-[11px] text-theatre-parchment-500 pt-1 border-t border-theatre-gold-500/10">
+              <span>Budget: ${request.budget?.toLocaleString()}</span>
+              <span>Model: {request.frequency}</span>
+            </div>
           </article>
         ))}
       </div>

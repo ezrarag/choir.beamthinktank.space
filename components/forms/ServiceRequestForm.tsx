@@ -22,69 +22,81 @@ export default function ServiceRequestForm({ offerings }: ServiceRequestFormProp
   }
 
   return (
-    <section className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-      <h3 className="text-lg font-semibold text-slate-100">Request Services</h3>
-      <p className="mt-1 text-sm text-slate-300">Mock form state for Phase 1. Backend wiring can replace this without UI changes.</p>
+    <section id="request-form" className="theatre-card p-6 sm:p-8 space-y-5">
+      <div className="border-b border-theatre-gold-500/20 pb-3">
+        <span className="text-[10px] font-theatre-cinzel uppercase tracking-[0.25em] text-theatre-gold-400">
+          Choral Guild Box Office
+        </span>
+        <h3 className="font-theatre-serif text-2xl sm:text-3xl text-theatre-parchment-50 font-normal">
+          Commission or Request Vocal Services
+        </h3>
+        <p className="mt-1 text-xs text-theatre-parchment-400 font-sans">
+          Specify your ensemble size requirements, project budget, and desired rehearsal or recording timeframe.
+        </p>
+      </div>
 
-      <form className="mt-4 grid gap-3" onSubmit={handleSubmit}>
-        <label className="grid gap-1 text-sm text-slate-200">
-          Offering
+      <form className="mt-4 grid gap-4" onSubmit={handleSubmit}>
+        <label className="grid gap-1.5 text-xs uppercase tracking-wider text-theatre-parchment-300">
+          Offering Package
           <select
             value={offeringId}
             onChange={(event) => setOfferingId(event.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm"
+            className="border border-theatre-gold-500/40 bg-theatre-dark-950 px-3 py-2.5 text-xs text-theatre-parchment-100 focus:border-theatre-gold-400 outline-none"
           >
             {offerings.map((offering) => (
               <option key={offering.id} value={offering.id}>
-                {offering.title}
+                {offering.title} ({offering.category})
               </option>
             ))}
           </select>
         </label>
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          <label className="grid gap-1 text-sm text-slate-200">
-            Budget (USD)
+        <div className="grid gap-4 sm:grid-cols-2">
+          <label className="grid gap-1.5 text-xs uppercase tracking-wider text-theatre-parchment-300">
+            Project Budget (USD)
             <input
               value={budget}
               onChange={(event) => setBudget(event.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm"
+              className="border border-theatre-gold-500/40 bg-theatre-dark-950 px-3 py-2.5 text-xs text-theatre-parchment-100 focus:border-theatre-gold-400 outline-none"
             />
           </label>
-          <label className="grid gap-1 text-sm text-slate-200">
-            Frequency
+          <label className="grid gap-1.5 text-xs uppercase tracking-wider text-theatre-parchment-300">
+            Frequency / Model
             <select
               value={frequency}
               onChange={(event) => setFrequency(event.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm"
+              className="border border-theatre-gold-500/40 bg-theatre-dark-950 px-3 py-2.5 text-xs text-theatre-parchment-100 focus:border-theatre-gold-400 outline-none"
             >
-              <option value="one-time">One-time</option>
-              <option value="monthly">Monthly</option>
-              <option value="series">Series</option>
-              <option value="custom">Custom</option>
+              <option value="one-time">One-time Staged Production</option>
+              <option value="monthly">Monthly Liturgical Residency</option>
+              <option value="series">Masterclass Series</option>
+              <option value="custom">Custom Choral Commission</option>
             </select>
           </label>
         </div>
 
-        <label className="grid gap-1 text-sm text-slate-200">
-          Notes
+        <label className="grid gap-1.5 text-xs uppercase tracking-wider text-theatre-parchment-300">
+          Notes & Repertoire Preferences
           <textarea
             value={notes}
             onChange={(event) => setNotes(event.target.value)}
             rows={4}
-            className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm"
-            placeholder="Goals, audience, schedule preferences..."
+            className="border border-theatre-gold-500/40 bg-theatre-dark-950 px-3 py-2.5 text-xs text-theatre-parchment-100 focus:border-theatre-gold-400 outline-none"
+            placeholder="Describe voicing needs (e.g. 24-voice SATB, Tenor Soloist, or Studio backing vocals)..."
           />
         </label>
 
-        <button type="submit" className="rounded-lg bg-amber-300 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-amber-200">
-          Submit Request
+        <button type="submit" className="theatre-btn-gold text-xs py-3">
+          Submit Commission Request
         </button>
       </form>
 
       {submitted ? (
-        <div className="mt-4 rounded-lg border border-emerald-400/35 bg-emerald-500/10 p-3 text-sm text-emerald-200">
-          Request captured in mock state for <strong>{selected?.title ?? 'selected offering'}</strong> with a {frequency} frequency and ${budget} budget.
+        <div className="mt-4 border border-theatre-gold-500/60 bg-theatre-dark-850 p-4 text-xs text-theatre-parchment-200">
+          <div className="font-theatre-serif text-lg text-theatre-gold-300 font-semibold mb-1">
+            Request Recorded in Guild Desk
+          </div>
+          Commission inquiry captured for <strong>{selected?.title ?? 'selected offering'}</strong> with a {frequency} timeline and proposed ${budget} allocation.
         </div>
       ) : null}
     </section>

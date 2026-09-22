@@ -6,22 +6,52 @@ interface OfferingCardProps {
 
 export default function OfferingCard({ offering }: OfferingCardProps) {
   return (
-    <article className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-      <div className="flex items-center justify-between gap-2">
-        <h3 className="text-base font-semibold text-slate-100">{offering.title}</h3>
-        <span className="rounded-full border border-amber-300/35 px-2 py-0.5 text-xs uppercase text-amber-200">
-          {offering.category}
-        </span>
+    <article className="theatre-card flex flex-col justify-between group hover:border-theatre-gold-400 transition-all duration-300">
+      <div className="space-y-3">
+        <div className="flex items-center justify-between border-b border-theatre-gold-500/20 pb-3">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-theatre-gold-400 font-semibold font-theatre-cinzel">
+            {offering.category}
+          </span>
+          <span className="font-theatre-serif text-base text-theatre-gold-300 font-bold">
+            {offering.pricingModel === 'fixed' && offering.price
+              ? `$${offering.price.toLocaleString()}`
+              : offering.pricingModel === 'subscription' && offering.price
+              ? `$${offering.price.toLocaleString()} / mo`
+              : 'Commission / Custom'}
+          </span>
+        </div>
+
+        <h3 className="font-theatre-serif text-2xl text-theatre-parchment-50 group-hover:text-theatre-gold-200 transition-colors">
+          {offering.title}
+        </h3>
+
+        <p className="text-xs text-theatre-parchment-400 leading-relaxed font-sans">
+          {offering.description}
+        </p>
+
+        <div className="pt-2 border-t border-theatre-gold-500/15">
+          <div className="text-[10px] uppercase tracking-wider text-theatre-parchment-400 mb-1.5">
+            Deliverable Milestones:
+          </div>
+          <ul className="space-y-1 text-xs text-theatre-parchment-300 font-sans">
+            {offering.deliverables.map((deliverable) => (
+              <li key={deliverable} className="flex items-center gap-2">
+                <span className="text-theatre-gold-500 text-xs">❖</span>
+                <span>{deliverable}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <p className="mt-2 text-sm text-slate-300">{offering.description}</p>
-      <p className="mt-3 text-xs text-slate-400">
-        Pricing: {offering.pricingModel === 'fixed' && offering.price ? `$${offering.price}` : offering.pricingModel}
-      </p>
-      <ul className="mt-3 space-y-1 text-xs text-slate-300">
-        {offering.deliverables.map((deliverable) => (
-          <li key={deliverable}>- {deliverable}</li>
-        ))}
-      </ul>
+
+      <div className="pt-5 border-t border-theatre-gold-500/20 mt-4">
+        <a
+          href="#request-form"
+          className="theatre-btn-gold text-[10px] w-full text-center py-2.5 block"
+        >
+          Select for Request
+        </a>
+      </div>
     </article>
   )
 }
