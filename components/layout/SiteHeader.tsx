@@ -5,12 +5,12 @@ import { usePathname } from 'next/navigation'
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/#programme', label: 'Season Programme' },
-  { href: '/#roster', label: 'Vocal Roster' },
-  { href: '/profile', label: 'Choral Profile & Stems' },
-  { href: '/services', label: 'Box Office & Services' },
-  { href: '/join', label: 'Auditions & Guild' },
-  { href: '/dashboard', label: 'Desk' },
+  { href: '/#programme', label: 'Season' },
+  { href: '/profile', label: 'Vocal CV & Stems' },
+  { href: '/team', label: '6-Guild Company' },
+  { href: '/services', label: 'Box Office' },
+  { href: '/join', label: 'Auditions' },
+  { href: '/dashboard', label: 'Operations Desk' },
 ]
 
 export default function SiteHeader() {
